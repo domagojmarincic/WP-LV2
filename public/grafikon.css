@@ -1,0 +1,129 @@
+/* Globalne CSS varijable */
+:root {
+    --chart-size: 200px;
+    --color-1: #0077cc;
+    --color-2: #00aaff;
+    --color-3: #ffcc00;
+    --color-4: #ff5733;
+}
+
+/* Reset osnovnih stilova */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+header {
+    background-color: var(--color-1);
+    color: white;
+    padding: 15px;
+}
+.nav-container {
+    position: relative;
+    width: 200px;
+    margin: 20px;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+.menu-button {
+    display: block;
+    background-color: #0077cc;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.nav-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #f4f4f4;
+    width: 200px;
+    position: absolute;
+    left: -220px;
+    transition: left 0.3s;
+}
+
+.nav-menu li {
+    padding: 10px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+#menu-toggle:checked + .menu-button + .nav-menu {
+    left: 0;
+}
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.chart-container {
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Pie Chart */
+.pie-chart {
+    position: relative;
+    width: var(--chart-size);
+    height: var(--chart-size);
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.slice {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(50% 50%, 100% 50%, 100% 0, 50% 0);
+    transform-origin: 50% 50%;
+    transition: transform 1s ease-in-out;
+}
+
+/* Postavljanje segmenata (primjer: 4 segmenta) */
+.slice-1 { background-color: var(--color-1); transform: rotate(0deg) skewY(-30deg); }
+.slice-2 { background-color: var(--color-2); transform: rotate(90deg) skewY(-30deg); }
+.slice-3 { background-color: var(--color-3); transform: rotate(180deg) skewY(-30deg); }
+.slice-4 { background-color: var(--color-4); transform: rotate(270deg) skewY(-30deg); }
+
+/* Animacija pojavljivanja grafikona */
+/* Kada korisnik prijeđe mišem preko grafikona, svi segmenti se izravnavaju */
+.pie-chart:hover .slice {
+    transform: rotate(0deg) skewY(0deg);
+}
+
+/* Legenda */
+.chart-legend {
+    margin-top: 20px;
+}
+
+.legend-item {
+    display: inline-block;
+    padding: 10px;
+    margin: 5px;
+    color: white;
+    font-weight: bold;
+    background-color: var(--color);
+    border-radius: 5px;
+}

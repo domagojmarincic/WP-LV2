@@ -1,0 +1,168 @@
+/* Globalne stilizacije */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+header {
+    background-color: #0077cc;
+    color: white;
+    padding: 15px;
+}
+.nav-container {
+    position: relative;
+    width: 200px;
+    margin: 20px;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+.menu-button {
+    display: block;
+    background-color: #0077cc;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.nav-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #f4f4f4;
+    width: 200px;
+    position: absolute;
+    left: -220px;
+    transition: left 0.3s;
+}
+
+.nav-menu li {
+    padding: 10px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+#menu-toggle:checked + .menu-button + .nav-menu {
+    left: 0;
+}
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Galerija slika */
+.galerija {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.galerija_slika img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Efekt hover promjene */
+.galerija_slika img:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+/* Lightbox (uvećane slike) */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
+/* Lightbox aktivacija pomoću :target */
+.lightbox:target {
+    display: flex;
+}
+
+/* Gumb za zatvaranje */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+}
+
+/* Responzivnost */
+@media (max-width: 600px) {
+    .galerija {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .galerija_slika img {
+        border-radius: 5px;
+    }
+
+    .lightbox img {
+        max-width: 95%;
+    }
+}
+
+/* Dodatni stilovi prema predlošku */
+.galerija_slika figcaption {
+    font-size: 14px;
+    color: #333;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.galerija_slika a {
+    text-decoration: none;
+}
+
+.galerija_slika img {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Prilagodba za različite veličine ekrana */
+@media (max-width: 800px) {
+    .galerija_slika img {
+        border-radius: 8px;
+    }
+
+    .galerija {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}
